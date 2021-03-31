@@ -1,0 +1,43 @@
+
+  .location-title {
+    border-bottom: 3px solid gray;
+    padding: 2rem;
+    font-family: var(--primary-font);
+    font-size: 1.5rem;
+  }
+
+.location-container {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  font-family: var(--primary-font);
+
+
+  .location-img {
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+
+  .temperature {
+    font-size: 3rem;
+    color: gold;
+    font-weight: bold;
+  }
+
+  .btn-heart {
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: rgba(255, 82, 82, 1);
+  }
+
+}
+
+.general-info span {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+}
+
+

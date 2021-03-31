@@ -1,0 +1,60 @@
+
+.switch-container {
+    --width: 40px;
+    --height: 20px;
+    --border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+
+    // &.toggled {
+    //     .toggle-input {
+    //         &:checked ~ .toggle-fill {
+    //             background: gold;
+    //         }
+    //     }
+    // }
+    .toggle-input {
+        display: none;
+
+        &.toggled {
+            &:checked ~.toggle-fill {
+                background: gold;
+            }
+        }
+
+        &:checked ~ .toggle-fill {
+            background: gold;
+
+        }
+
+
+
+        &:checked ~ .toggle-fill::after {
+            transform: translateX(var(--height));
+        }
+    }
+
+}
+.toggle-fill {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: #ddd;
+    transition: background 0.2s;
+
+    &::after {
+
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: 0 0 10px rgba(0,0,0,0.25);
+        transition: transform 0.2s;
+    }
+}
+

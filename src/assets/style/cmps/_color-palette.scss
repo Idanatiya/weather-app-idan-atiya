@@ -1,0 +1,49 @@
+.palette-container {
+    width: 260px;
+    height: 200px;
+    border: 1px solid #4f4d4d;
+    background: #202225;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    position: absolute;
+    right: 15px;
+    top: 31px;
+    z-index: 2;
+    border-radius: 3px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;
+
+    .color-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        border: 1px solid  #414141;
+        margin-left: 3px;
+        cursor: pointer;
+        transition: .1s ease-in-out;
+
+        &.selected {
+            border: 3px solid white;
+        }
+
+        &.selected::after {
+            content: "✔";
+            color: white;
+        }
+
+        &.next-circle {
+            font-size: 2rem;
+            color: white;
+
+        }
+
+        &:hover {
+            border: 1px solid white;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+//FONTS
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carme&display=swap');
+
+// SETUP
+@import 'setup/variables';
+@import 'setup/mixins';
+@import 'setup/functions';
+// BASICS
+@import 'basics/helpers';
+@import './basics/layout';
+@import 'basics/base';
+
+//cmps
+@import './cmps/new-header';
+@import './cmps/sidebar';
+@import './cmps/weather-search';
+@import './cmps/featured-location';
+@import './cmps/forecast-list';
+@import './cmps/favorite-preview';
+@import './cmps/dark-mode';
+@import './cmps/toast';
+@import './cmps/modal';
+@import './cmps/color-palette';
+@import './cmps/loader';
+@import './cmps/_toggleTemp-btn';
+
+
+//View
+@import './views/favorites';

@@ -1,0 +1,86 @@
+
+.app-header-container {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    background-color: var(--primary-color);
+
+    .header-left {
+        margin-left: 20px;
+        flex: 0.2;
+        display: flex;
+        align-items: center;
+        .btn-modal {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: auto;
+            margin-right: 30px;
+            
+        }  
+    }
+    
+    
+    
+    .header-right {
+        flex: 0.4;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 20px;
+        position: relative;
+        
+        & > * {
+            margin-left: 20px;
+        }
+        
+        /****Manage show and hide the color palette****/
+        .change-theme-btn {
+            color: white;
+            margin-right: 30px;
+            font-size: 1.5rem;
+
+            &:hover {
+                .palette-container {
+                    opacity: 1;
+                   visibility: visible;
+                }
+            }
+            
+        }
+        
+    }
+}
+
+
+.avatar-container {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    font-size: 1.25rem;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    cursor: pointer;
+    
+    :hover {
+        opacity: 0.7;
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+.show-search-bar {
+    visibility: visible;
+}
+
+.hide-search-bar {
+    visibility: hidden;
+}

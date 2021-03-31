@@ -1,0 +1,30 @@
+.forecast-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+    margin-top: 150px;
+    padding: 0 2rem;
+
+    .forecast-txt {
+        font-family: var(--primary-font);
+        display: flex;
+        align-items: center;
+        
+    }
+
+
+    .forecast-preview {
+        background: var(--deep-black);
+        height: 150px;
+        border-radius: 4px;
+        padding: 1rem;
+        font-family: var(--primary-font);
+        box-shadow: 0 0 11px rgba(33,33,33,.2);
+
+        .forecast-info {
+            span {
+                padding: 0.5rem;
+            }
+        }
+    }
+}

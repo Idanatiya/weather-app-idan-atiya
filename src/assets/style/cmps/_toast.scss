@@ -1,0 +1,42 @@
+.toast-container {
+  position: fixed;
+  bottom: 50px;
+  right: 25px;
+  width: 360px;
+  height: 65px;
+  color: #222;
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  background-color: #fafafa;
+  font-family: 'Poppins', sans-serif;
+  z-index: 2;
+  padding: 0 1rem;
+  font-size: 13px;
+  font-weight: bold;
+  .toast-msg {
+    margin-left: 0.5rem;
+  }
+
+  &.success {
+    .toast-icon {
+      font-size: 1.5rem;
+      color: gold;
+    }
+    border-bottom: 4px solid gold;
+  }
+
+  &.error {
+    .toast-icon {
+      font-size: 1.5rem;
+      color: crimson;
+    }
+    border-bottom: 4px solid crimson;
+  }
+}
+
+.app-content.light {
+  .toast-container {
+    background: var(--deep-black);
+  }
+}

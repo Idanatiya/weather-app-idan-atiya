@@ -1,0 +1,19 @@
+.favorites-container {
+    font-family: var(--primary-font);
+    .favorites-header {
+        display: block;
+        border-bottom: 3px solid gray;
+        padding: 2rem;
+        font-size: 1.5rem;
+    }
+
+
+    .favorite-loc-container {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 450px));
+        margin-top: 50px;
+        padding: 0 2rem;
+    }
+
+}

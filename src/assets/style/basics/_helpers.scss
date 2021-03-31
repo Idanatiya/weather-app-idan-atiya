@@ -1,0 +1,169 @@
+.clean-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+// .content {
+//   max-width: 1500px;
+// }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  z-index: 1;
+  width: 100%;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.round-img {
+  border-radius: 50%;
+}
+
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.column-reverse {
+  flex-direction: column-reverse;
+}
+
+
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.min-h-100 {
+  min-height: 100vh;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.place-center {
+  place-items: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.btn {
+  background: transparent;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+
+.p5 {
+  padding: 5px;
+}
+.p10 {
+  padding: 10px;
+}
+.p20 {
+  padding: 20px;
+}
+.m5 {
+  margin: 5px;
+}
+.m10 {
+  margin: 10px;
+}
+.m20 {
+  margin: 20px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.hover-scale:hover {
+  transform: scale(1.1);
+}
+
+.yami-food-link:target {
+  background-color: #d0a772;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.clean-list {
+  list-style-type: none;
+}
