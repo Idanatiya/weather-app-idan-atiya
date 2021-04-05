@@ -14,7 +14,6 @@ export function prefReducer (state = INITIAL_STATE, action) {
       };
     case 'SET_APP_MODE_THEME':
         localStorage.setItem('mode',action.mode)
-        console.log('changin mode...',action.mode);
         return {
             ...state,
             mode: action.mode

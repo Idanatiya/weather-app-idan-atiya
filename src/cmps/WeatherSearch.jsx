@@ -22,7 +22,14 @@ export default function WeatherSearch() {
     }
   },[isVisible])
 
- 
+
+  useEffect(() => {
+    if(options.length === 0) {
+      console.log('no options, setting visible to fale');
+      setIsVisible(false);
+    }
+  },[options])
+
 
   const handleClickOutside = e => {
     const {current: inputWrapper} = wrapperRef;
@@ -32,30 +39,28 @@ export default function WeatherSearch() {
     }
   }
 
-
   const handleChange = e => {
+    console.log(e);
     const inputVal = inputRef.current.value.trim()
-    console.log(inputRef.current);
     const isValid = /^(?:[A-Za-z]+|\d+)$/.test (inputVal);
-    if (!isValid) {
+    if (!isValid && inputVal !== '') {
       dispatch ( setToast ({msg: 'Only English letters allowed!', type: 'error'}));
       return;
     }
     if (timeoutId)  clearTimeout (timeoutId);
-    timeoutId = setTimeout ( async () => {
-      await dispatch(loadAutoOptions(inputVal))
-      setIsVisible(true)
+    timeoutId = setTimeout (() => {
+        setIsVisible(true)
+        dispatch(loadAutoOptions(inputVal))
     }, 1500);
   };
 
 
-  const handleSelectOption = async selectedOption => {
-    console.log('clicked:',selectedOption);
-    // setSearchTerm (selectedOption.LocalizedName);
+
+  const handleSelectOption = selectedOption => {
     inputRef.current.value = selectedOption.LocalizedName;
     setIsVisible (false);
-    await dispatch(loadCurrLocation(selectedOption));
-    await dispatch(loadCurrForecast(selectedOption));
+     dispatch(loadCurrLocation(selectedOption));
+     dispatch(loadCurrForecast(selectedOption));
   };
 
 
@@ -71,7 +76,7 @@ export default function WeatherSearch() {
         autoComplete="off"
       />
     {isVisible && <section className="auto-container">
-    {options && options.map(option => {
+    {options.length > 0 && options.map(option => {
       return (
         <section className="option" key={option.Key} onClick={() => handleSelectOption(option) }>
           <i className="fas fa-map-marker-alt"></i>

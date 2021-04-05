@@ -1,8 +1,5 @@
 const INITIAL_STATE = {
-  toast: {
-    msg: '',
-    type: '',
-  },
+  toast: null
 };
 
 export function toastReducer (state = INITIAL_STATE, action) {

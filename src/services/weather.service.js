@@ -1,10 +1,10 @@
 import axios from 'axios';
 import {storageService} from './storage-service';
-const API_KEY = '0NTNKr3nOntuWUfHInkH08Y0lfAVFL7c';
+let cancelToken;
+const API_KEY = '3LxGFGyVNFTk82rsvzUSyWq2a5a7zibC';
 var gFavLocations = storageService.loadFromStorage('favoriteDB') || [];
 
 export function addLocation (location) {
-  console.log('location in service:',location);
     const favLocation = {
         id: location.locationKey,
         name: location.locationName,
@@ -24,20 +24,33 @@ export async function deleteLocation(locationId) {
 }
 
 
+
 async function getCities (searchTerm) {
+  if (typeof cancelToken != typeof undefined) {
+    cancelToken.cancel("Operation canceled due to new request.");
+  }
+  cancelToken = axios.CancelToken.source();
+
   try {
+    const res = await axios.get (
+      `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${searchTerm}`, {
+        cancelToken: cancelToken.token
+      }
+    );
+    const options = res.data;
+    if(options.length === 0){
+      throw Error(`No options Available for ${searchTerm}`);
+    } 
+    return options;
+    
+  } catch (err) {
+     throw err
+  }
     // const locations = JSON.parse (localStorage.getItem ('locations'));
     // if (locations) return locations;
-    const res = await axios.get (
-      `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${searchTerm}`
-    );
-    console.log('res data', res.data);
+    
     // localStorage.setItem ('locations', JSON.stringify (res.data));
-    return res.data;
-  } catch (err) {
-      return err.message
-
-  }
+  
 }
 
 export async function getCurrentWeather (location) {
@@ -48,7 +61,6 @@ export async function getCurrentWeather (location) {
     const res = await axios.get (
       `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}&details=true`
     );
-
     const {
       CloudCover : cloudCover,
       IsDayTime: isDayTime,
@@ -73,7 +85,9 @@ export async function getCurrentWeather (location) {
     };
     return location;
   } catch (err) {
-    return err.message
+    console.log(err.message);
+    throw err
+    // throw err.message
   }
 }
 
@@ -83,6 +97,7 @@ export async function getForecast (location) {
     const res = await axios.get (
       `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${Key}?apikey=${API_KEY}`
     );
+
     const {Headline,DailyForecasts: dailyForecasts} = res.data;
     const {Text: text,Severity: sevirity,EffectiveDate: effectiveDate} = Headline;
     return {
@@ -92,7 +107,7 @@ export async function getForecast (location) {
       dailyForecasts
     }
   } catch (err) {
-    return err.message;
+    throw err;
   }
 }
 
@@ -102,7 +117,7 @@ export async function getDefaultLocation(location) {
         const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${latitude},${longitude}`);
         return res.data
     } catch (err) {
-        return err.message;
+        throw err
     }
 }
 

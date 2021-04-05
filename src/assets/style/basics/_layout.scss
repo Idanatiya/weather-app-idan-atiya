@@ -41,6 +41,10 @@
     color: white;
   }
 
+  .forecast-preview {
+    color: white;
+  }
+
   .btn-location {
     background: #fff;
     color: #0e0e10;
@@ -76,15 +80,15 @@
 
 
 
-.avatar-img {
-  position: fixed;
-  top: 47%;
-  padding: 11px 16px;
-  transform: rotate(311deg);
-  right: -135px;
-  cursor: pointer;
-  width: 355px;
-}
+// .avatar-img {
+//   position: fixed;
+//   top: 47%;
+//   padding: 11px 16px;
+//   transform: rotate(311deg);
+//   right: -135px;
+//   cursor: pointer;
+//   width: 355px;
+// }
 
 
 @media (max-width: 370px) {

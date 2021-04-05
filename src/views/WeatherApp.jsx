@@ -22,19 +22,21 @@ export default function WeatherApp () {
   useEffect(() => {
     if(location && !isLoading && !locationKey && !locationName) dispatch(loadDefaultLocation(location))
   },[location,isLoading]);
+
   
-    useEffect (
-      () => {
-        const location = {
-          Key: locationKey,
-          LocalizedName: locationName,
-        };
-        if(!locationKey || !locationName) return;
-        dispatch (loadCurrLocation (location));
-        dispatch (loadCurrForecast (location));
-      },
-      [locationKey, locationName,loading]
-    );
+  useEffect (
+    () => {
+      const location = {
+        Key: locationKey,
+        LocalizedName: locationName,
+      };
+      if(!locationKey || !locationName) return;
+      dispatch (loadCurrLocation (location));
+      dispatch (loadCurrForecast (location));
+    },
+    [locationKey, locationName,loading]
+  );
+
 
   const checkIfExists = location => {
     return favorites.find(loc => loc.id === location.locationKey)

@@ -3,10 +3,7 @@ import {createPortal } from 'react-dom';
 import logo from '../assets/imgs/hero.png'
 
 const elModalContainer = document.querySelector('#app-modal')
-
 function Modal({showModal,hide}) {
-
-
     useEffect(() => {
         function handleKeyDown(ev) {
             if(ev.keyCode === 27) hide()
@@ -24,6 +21,7 @@ function Modal({showModal,hide}) {
             <p>The Modal is very cool am i right? </p>
             <span className="close-btn" onClick={hide}><i className="far fa-times-circle"></i></span>
             <a href="https://github.com/Idanatiya"  target="_blank" className="modal-btn"><i className="fab fa-github-alt fa-lg"></i> Check my github</a>
+            <span>My name is idan</span>
         </section>
       </section>
     ,elModalContainer) : null

@@ -3,6 +3,7 @@ import {useHistory} from 'react-router';
 import { setToast } from './../store/actions/toastAction';
 import {deleteFavLocation} from './../store/actions/weatherAction';
 import FavoritePreview from '../cmps/FavoritePreview';
+import dogeIcon from '../assets/imgs/doge.png'
 
 export default function Favorites () {
   const dispatch = useDispatch ();
@@ -35,29 +36,9 @@ export default function Favorites () {
               visitLocation={visitLocation}
               removeLocation={removeLocation}
             />
-          )) : <div className="placeholder">No Favorites Yet...</div>}
+          )) : <div className="placeholder">Not having any favorites <img className="doge-icon" src={dogeIcon} alt="" /></div>}
       </section>
     </section>
   );
 }
 
-// return (
-//   <div className="favorites-container flex column align-center">
-//     {favorites.length > 0
-//       ? <section className="favorite-list flex wrap justify-center">
-//           {favorites.map ((favLocation, idx) => (
-//             <FavoritePreview
-//               key={idx}
-//               favLocation={favLocation}
-//               removeFavLocation={removeFavLocation}
-//               goToLocation={goToLocation}
-//             />
-//           ))}
-//         </section>
-//       : <section>
-//           <h1>🍕 No Favorites yet</h1>
-//         </section>}
-
-//   </div>
-// );
-// }

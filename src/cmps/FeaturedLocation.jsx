@@ -10,7 +10,6 @@ export default function FeaturedLocation({location,addToFavorites}) {
 
     const convertFarhernheitToCelcius = temp => {
       return Math.round(((temp - 32 ) * (5 / 9)).toFixed(0));  
-      
   }
   const cTemp = isToggled ? convertFarhernheitToCelcius(location.temperature.Imperial.Value) : location.temperature.Imperial.Value;
   const tempUnit = isToggled ? <>&#8451;</> : <>&#8457;</>;

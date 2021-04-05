@@ -5,7 +5,6 @@ const useModal = () => {
     const [showModal,setShowModal] = useState(false);
 
     function toggle() {
-        console.log('state updated');
         setShowModal(!showModal)
     }
 

@@ -1,0 +1,29 @@
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    width: 50px;
+    height: 50px;
+    line-height: 35px;
+    cursor: pointer;
+
+    &.rounded-white {
+        border: 4px solid white;
+    }
+    :hover {
+        opacity: 0.7;
+    }
+    span {
+        font-size: 1.125rem;
+        letter-spacing: 1px;
+        font-weight: initial;
+        font-family: var(--primary-font),sans-serif;
+    }
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+}
