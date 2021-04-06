@@ -10,7 +10,7 @@ import { loadDefaultLocation, addLocationToFav,loadCurrLocation,loadCurrForecast
 import useGeoLocation from '../custom-hooks/useGeoLocation.js';
 import FeaturedLocation from '../cmps/FeaturedLocation.jsx';
 import ForecastList from '../cmps/ForecastList.jsx';
-import Loader from '../cmps/Loader.jsx';
+import Loader from '../cmps/custom-cmps/Loader.jsx';
 
 export default function WeatherApp () {
   const dispatch = useDispatch ();

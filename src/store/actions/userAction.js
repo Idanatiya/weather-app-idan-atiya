@@ -12,17 +12,12 @@ export function signup(user) {
 }
 
 export function login(username) {
-    return dispatch => {
-        console.log('getting into login action',username);
         try {
             const user = userService.handleLogin(username);
-            console.log('user',user);
-            dispatch({type: 'SET_USER', user})
+            return {type: 'SET_USER',user}
         } catch (err) {
-            // dispatch(setToast({msg: err.message, type: 'error'}))
-            throw Error(err.message)
+            setToast({msg: err.message, type: 'error'})
         }
-    }
 }
 
 

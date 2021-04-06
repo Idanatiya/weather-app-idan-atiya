@@ -24,8 +24,7 @@ export default function WeatherSearch() {
 
 
   useEffect(() => {
-    if(options.length === 0) {
-      console.log('no options, setting visible to fale');
+    if(options.length === 0 || inputRef.current.value === '') {
       setIsVisible(false);
     }
   },[options])
@@ -39,12 +38,16 @@ export default function WeatherSearch() {
     }
   }
 
-  const handleChange = e => {
-    console.log(e);
-    const inputVal = inputRef.current.value.trim()
+
+  const handleKeyup = e => {
+    const inputVal = inputRef.current.value.trim();
     const isValid = /^(?:[A-Za-z]+|\d+)$/.test (inputVal);
     if (!isValid && inputVal !== '') {
       dispatch ( setToast ({msg: 'Only English letters allowed!', type: 'error'}));
+      return;
+    }
+    if(e.code === 'Backspace' && inputVal === '') {
+      setIsVisible(false)
       return;
     }
     if (timeoutId)  clearTimeout (timeoutId);
@@ -52,8 +55,7 @@ export default function WeatherSearch() {
         setIsVisible(true)
         dispatch(loadAutoOptions(inputVal))
     }, 1500);
-  };
-
+  }
 
 
   const handleSelectOption = selectedOption => {
@@ -71,8 +73,8 @@ export default function WeatherSearch() {
       <input
         type="text"
         placeholder="Search Location..."
-        ref={inputRef}
-        onChange={handleChange}
+        ref={inputRef}  
+        onKeyUp={handleKeyup}
         autoComplete="off"
       />
     {isVisible && <section className="auto-container">

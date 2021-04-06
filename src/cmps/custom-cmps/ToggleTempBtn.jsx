@@ -1,6 +1,6 @@
 import { useDispatch,useSelector } from 'react-redux';
-import { toggleTemp } from './../store/actions/prefAction';
-import { setToast } from './../store/actions/toastAction';
+import { toggleTemp } from '../../store/actions/prefAction';
+import { setToast } from '../../store/actions/toastAction';
 function ToggleTempBtn() {
     const {isToggled} = useSelector(state => state.prefReducer)
     const dispatch = useDispatch();

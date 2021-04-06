@@ -1,62 +1,55 @@
-import {BrowserRouter as Router, Route, Switch,Redirect, useHistory} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch,Redirect} from 'react-router-dom';
 import useModal from './custom-hooks/useModal';
 import { useSelector, useDispatch } from 'react-redux';
-import {useEffect} from 'react'
+import {useEffect,useState} from 'react'
 import {
   setToast
  } from './store/actions/toastAction.js';
  import {logout} from './store/actions/userAction';
 import AppHeader from './cmps/layout/AppHeader.jsx';
-import Toast from './cmps/Toast.jsx';
+import Toast from './cmps/custom-cmps/Toast.jsx';
 import WeatherApp from './views/WeatherApp.jsx';
 import Favorites from './views/Favorites.jsx';
 import Signup from './views/Signup.jsx'
-import Modal from './cmps/Modal.jsx';
+import Modal from './cmps/custom-cmps/Modal.jsx';
 import Sidebar from './cmps/layout/Sidebar.jsx';
 import NoMatch from './views/NoMatch';
-import { render } from '@testing-library/react';
 
 
 
 function App () {
   const dispatch = useDispatch();
-  const history =  useHistory()
   const toast = useSelector(state => state.toastReducer.toast);
   const {theme,mode} = useSelector(state => state.prefReducer);
   const {user} = useSelector(state => state.userReducer)
   const {showModal,toggle} = useModal()
+  const [showMenu, setShowMenu] = useState(false)
   var timeoutId;
   useEffect (() => {
     timeoutId = setTimeout (() => {
         dispatch(setToast(null))
       },3000)
     return () => {
-      console.log('timeout:',timeoutId);
         clearTimeout(timeoutId)
     }
   },[toast]);
 
+
+  const toggleMobileMenu = () => {
+    setShowMenu(prevShowMenu => !prevShowMenu)
+  }
 
   const handleLogout = () => {
     dispatch(logout())
     dispatch(setToast({msg: 'You have been logged out', type: 'success'}))
   }
 
-  //ask about it
-  // function PrivateRoute({children,...rest}) {
-  //   return (
-  //     <Route {...rest} render={() => {
-  //       return user ? children : <Redirect to="/signup" />
-  //     }} />
-  //   )
-  // }
-
   return (
     <>
     {toast && <Toast toast={toast} />}
     <Modal showModal={showModal} hide={toggle}></Modal>
     <Router>
-      <div className="app-container">
+      <div className={`app-container ${showMenu ? 'show-menu' : ''}`}>
           <Switch>
             <Route path="/signup" component={Signup} />
           </Switch>
@@ -64,7 +57,7 @@ function App () {
         <Redirect to="/signup" />
       ) : (
         <>
-        <AppHeader toggle={toggle} theme={theme} user={user} handleLogout={handleLogout}/>
+        <AppHeader toggle={toggle} theme={theme} user={user} handleLogout={handleLogout} toggleMobileMenu={toggleMobileMenu}/>
         <Sidebar theme={theme} user={user} />
         <main className={`app-content ${mode}`}>
           <Switch>

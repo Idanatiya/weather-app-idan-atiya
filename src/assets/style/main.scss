@@ -7,9 +7,6 @@
 @import 'setup/mixins';
 @import 'setup/functions';
 // BASICS
-@import 'basics/helpers';
-@import './basics/layout';
-@import 'basics/base';
 
 //cmps
 @import './cmps/new-header';
@@ -30,3 +27,7 @@
 //View
 @import './views/favorites';
 @import './views/no-match';
+@import 'basics/helpers';
+
+@import './basics/layout';
+@import 'basics/base';

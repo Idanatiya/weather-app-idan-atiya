@@ -2,12 +2,12 @@ import {weatherService} from '../../services/weather.service';
 import {setToast} from './toastAction';
 
 export function loadAutoOptions (searchTerm) {
+  if(searchTerm === '') return;
   return async dispatch => {
     try {
       const options = await weatherService.getCities (searchTerm);
       dispatch ({type: 'SET_AUTOCOMPLETE_OPTIONS', options});
     } catch (err) {
-        console.log ('in weather action:', err.message);
         dispatch ({type: 'SET_AUTOCOMPLETE_OPTIONS', options: []});
         dispatch (setToast ({msg: err.message, type: 'error'}));
     }
@@ -19,7 +19,6 @@ export function loadCurrLocation (currLocation) {
           const location = await weatherService.getCurrWeather (currLocation);
           dispatch ({type: 'SET_CURR_LOCATION', location});
       } catch (err) {
-        console.log('caught in lodadcurrloc');
         dispatch (setToast ({msg: err.message, type: 'error'}));
       }
   };

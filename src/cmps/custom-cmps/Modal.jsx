@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {createPortal } from 'react-dom';
-import logo from '../assets/imgs/hero.png'
+import logo from '../../assets/imgs/hero.png';
 
 const elModalContainer = document.querySelector('#app-modal')
 function Modal({showModal,hide}) {

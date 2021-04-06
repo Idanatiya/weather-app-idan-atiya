@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux'
-import {setToast} from '../store/actions/toastAction';
-import { setAppMode } from './../store/actions/prefAction';
+import {setToast} from '../../store/actions/toastAction';
+import { setAppMode } from '../../store/actions/prefAction';
 
 
 export default function DarkModeBtn () {

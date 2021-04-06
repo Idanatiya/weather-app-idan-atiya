@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {storageService} from './storage-service';
 let cancelToken;
-const API_KEY = '3LxGFGyVNFTk82rsvzUSyWq2a5a7zibC';
+const API_KEY = 'TlsrALAXD6rT9J8BV3QDWDqQeAdqET7F';
 var gFavLocations = storageService.loadFromStorage('favoriteDB') || [];
 
 export function addLocation (location) {
@@ -46,18 +46,13 @@ async function getCities (searchTerm) {
   } catch (err) {
      throw err
   }
-    // const locations = JSON.parse (localStorage.getItem ('locations'));
-    // if (locations) return locations;
-    
-    // localStorage.setItem ('locations', JSON.stringify (res.data));
+
   
 }
 
-export async function getCurrentWeather (location) {
+export async function getCurrWeather (location) {
   const {Key : locationKey,LocalizedName:locationName} = location
   try {
-    // const locationWeather =  JSON.parse(localStorage.getItem('locationWeather'))
-    // if(locationWeather) return locationWeather
     const res = await axios.get (
       `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}&details=true`
     );
@@ -85,9 +80,7 @@ export async function getCurrentWeather (location) {
     };
     return location;
   } catch (err) {
-    console.log(err.message);
     throw err
-    // throw err.message
   }
 }
 
@@ -122,10 +115,12 @@ export async function getDefaultLocation(location) {
 }
 
 export const weatherService = {
-  getCities: getCities,
-  getCurrWeather: getCurrentWeather,
+  getCities,
+  getCurrWeather,
   getForecast,
   addLocation,
   deleteLocation,
   getDefaultLocation
 };
+
+

@@ -24,9 +24,9 @@ export default function Favorites () {
 
   return (
     <section className="favorites-container">
-      <div className="favorites-header">
+      <section className="favorites-header">
         <h2>Favorite Locations</h2>
-      </div>
+      </section>
       <section className="favorite-loc-container">
         {favorites.length > 0 ?
           favorites.map (favorite => (

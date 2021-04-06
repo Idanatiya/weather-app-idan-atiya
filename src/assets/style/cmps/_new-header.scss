@@ -9,7 +9,7 @@
     background-color: var(--primary-color);
 
     .header-left {
-        margin-left: 20px;
+        padding: 0 9px;
         flex: 0.2;
         display: flex;
         align-items: center;
@@ -35,6 +35,11 @@
         a {
             color: white;
         }
+
+       .signout-btn {
+           color: white;
+           font-size: 1.5rem;
+       }
         
         & > * {
             margin-left: 20px;
@@ -43,7 +48,6 @@
         /****Manage show and hide the color palette****/
         .change-theme-btn {
             color: white;
-            margin-right: 30px;
             font-size: 1.5rem;
 
             &:hover {
@@ -88,4 +92,10 @@
 
 .hide-search-bar {
     visibility: hidden;
+}
+
+.btn-mobile-menu {
+    display: none;
+    color: white;
+    font-size: 2rem;
 }

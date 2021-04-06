@@ -23,12 +23,10 @@ function Signup () {
     ? 'Already have an account? Sign in!'
     : 'You dont have an account? Sign up!';
   const btnTxt = isSignup ? 'Signup' : 'Login';
-  console.log(errMsg);
 
 
   const handleSubmit = ev => {
     ev.preventDefault ();
-    try {
       if(isSignup) {
         const {username, skills, userImg} = user;
         const userToAdd = {username, userImg, skills};
@@ -37,9 +35,7 @@ function Signup () {
         dispatch(login(user.username))
       }
       history.push('/')
-    } catch (err) {
-      dispatch(setToast({type: 'error', msg: err.message}))
-    }
+      dispatch(setToast({msg: `Welcome, ${user.username}`, type: 'success'})) 
     
   };
   

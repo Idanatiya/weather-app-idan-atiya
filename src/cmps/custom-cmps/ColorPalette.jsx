@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 // import palette from 'nice-color-palettes/100';
-import {setTheme} from './../store/actions/prefAction';
+import {setTheme} from '../../store/actions/prefAction';
 import {useDispatch} from 'react-redux';
 const COLOR_PALETTE = require ('nice-color-palettes/100').flat (100);
 const PAGE_SIZE = 25;

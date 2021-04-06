@@ -19,9 +19,6 @@ export default function Sidebar ({theme,user}) {
           <i className="far fa-star" />
           <span>Favorites</span>
         </NavLink>
-        <div className="sidebar-link">Profile</div>
-        <div className="sidebar-link">Link 3</div>
-        <div className="sidebar-link">Link 4</div>
       </div>
     </section>
   );
