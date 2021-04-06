@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router';
 import { userService } from './../../services/user.service';
 import { setToast } from './toastAction';
 
