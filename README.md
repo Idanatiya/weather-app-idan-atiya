@@ -6,7 +6,6 @@ Weather App Using AccuWeather API Using React Hooks & Redux, Scss With Cool Feat
  
  
 ## Live Demo
-https://weather-app-react-idan-atiya.netlify.app/
-
+https://weatherdoge-reacthooks-idanatiya.netlify.app/signup
 
 
