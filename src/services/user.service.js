@@ -11,6 +11,7 @@ function handleLogin(username) {
     if(!user) {
         throw Error(`User ${username} is not exists`)
     }
+    // storageService.saveToStorage('loggedUser',user)
     return user;
 }
 
@@ -23,6 +24,7 @@ function handleSignup(user) {
     }
     gUsers.push(userToAdd)
     storageService.saveToStorage('userDB',gUsers)
+    // storageService.saveToStorage('loggedUser',userToAdd)
     return userToAdd;
 }
 

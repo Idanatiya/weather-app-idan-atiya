@@ -192,7 +192,7 @@
       flex-direction: column;
 
       .temperature {
-        font-size: 2rem;
+        font-size: 1.3rem;
       }
     }
   }
@@ -207,8 +207,23 @@
   .auto-container {
     width: 250px;
     .option {
-      padding: 8px;
+      padding: 7px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #d9d9d9;
       width: 100%;
+    }
+  }
+
+
+  .placeholder {
+    display: flex;
+    position: unset;
+    transform: unset;
+    align-items: center;
+    font-size: 15px;
+    .doge-icon {
+      width: 60px;
     }
   }
 

@@ -25,7 +25,7 @@ export default function FeaturedLocation({location,addToFavorites}) {
           src={`https://developer.accuweather.com/sites/default/files/${locationIcon}-s.png`}
           alt={`${location.weatherIcon}-icon`}
         />
-        <h3 className="temperature">{cTemp}{tempUnit} at {location.locationName}</h3>
+        <h3 className="temperature">{cTemp}{tempUnit} at {location.locationName},<span className="location-desc">{location.adminstrativeName},{location.countryName}</span></h3>
         <span onClick={() => addToFavorites(location)} className="btn-heart"><i className="fas fa-heart"></i></span>
       </section>
       <section className="general-info flex column">

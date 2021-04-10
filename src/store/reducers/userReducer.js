@@ -9,13 +9,11 @@ const INITIAL_STATE = {
 export function userReducer (state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_USER':
-      storageService.saveToStorage('loggedUser',action.user)
       return {
         ...state,
         user: action.user,
       };
       case 'LOGOUT_USER':
-      storageService.saveToStorage('loggedUser',null)
       return {
         ...state,
         user: null,

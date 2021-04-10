@@ -59,11 +59,22 @@ export default function WeatherSearch() {
 
 
   const handleSelectOption = selectedOption => {
-    inputRef.current.value = selectedOption.LocalizedName;
-    setIsVisible (false);
+     inputRef.current.value = selectedOption.LocalizedName;
+     setIsVisible (false);
      dispatch(loadCurrLocation(selectedOption));
      dispatch(loadCurrForecast(selectedOption));
   };
+
+  const filteredOptions = () => {
+    const mySet = new Set()
+    options.forEach(option => {
+      if(!mySet.has(option.LocalizedName)) {
+        mySet.add(option)
+      }
+    })
+    console.log(mySet);
+    return [...mySet];
+  }
 
 
   return (
@@ -82,7 +93,7 @@ export default function WeatherSearch() {
       return (
         <section className="option" key={option.Key} onClick={() => handleSelectOption(option) }>
           <i className="fas fa-map-marker-alt"></i>
-          <span className="location-name">{option.LocalizedName}</span>
+          <span className="location-name">{option.LocalizedName},{option.Country.LocalizedName},{option.AdministrativeArea.LocalizedName}</span>
         </section>
       )
     })}
