@@ -137,7 +137,7 @@ function Signup () {
         <h3 className="features-title">Features</h3>
           <span>Autocomplete search, Weekly forecast, Favorites, Temperature toggle, Custom themes, Dark Mode/Light Mode. <br /></span>
           <span>Login/Signup to check this up!</span>
-          <p>Check The Code on GIT</p>
+          <p>Check The Code on GIT.</p>
           <a className="github-btn" href="https://github.com/Idanatiya/weather-app-idan-atiya"><i className="fab fa-github"></i> GITHUB</a>
         </div>
       </div>

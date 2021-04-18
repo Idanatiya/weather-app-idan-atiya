@@ -57,6 +57,7 @@ function App () {
         <Redirect to="/signup" />
       ) : (
         <>
+        .
         <AppHeader toggleModal={toggleModal} theme={theme} user={user} handleLogout={handleLogout} toggleMobileMenu={toggleMobileMenu}/>
         <Sidebar theme={theme} user={user} />
         <main className={`app-content ${mode}`}>
