@@ -17,7 +17,7 @@ function NoMatch() {
             <figure>
                 <img src={notFoundLogo} alt="page-not-found" />
             </figure>
-            <Link to="/"> Go To Dashboard</Link>
+            <Link to="/"> Go To Dashboard!!</Link>
         </section>
     )
 }
