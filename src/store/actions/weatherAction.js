@@ -9,7 +9,7 @@ export function loadAutoOptions (searchTerm) {
       dispatch ({type: 'SET_AUTOCOMPLETE_OPTIONS', options});
     } catch (err) {
         dispatch ({type: 'SET_AUTOCOMPLETE_OPTIONS', options: []});
-        dispatch (setToast ({msg: err.message, type: 'error'}));
+        dispatch (setToast ({msg: `Can't get auto complete options`, type: 'error'}));
     }
   };
 }
@@ -19,7 +19,7 @@ export function loadCurrLocation (currLocation) {
           const location = await weatherService.getCurrWeather (currLocation);
           dispatch ({type: 'SET_CURR_LOCATION', location});
       } catch (err) {
-        dispatch (setToast ({msg: err.message, type: 'error'}));
+        dispatch (setToast ({msg: `Can't load current Location`, type: 'error'}));
       }
   };
 }
@@ -30,7 +30,7 @@ export function loadCurrForecast (currLocation) {
           const forecast = await weatherService.getForecast (currLocation);
           dispatch ({type: 'SET_CURR_FORECAST', forecast});
       } catch (err) {
-        dispatch (setToast ({msg: err.message, type: 'error'}));
+        dispatch (setToast ({msg:`Can't load forecast`, type: 'error'}));
       }
   };
 }
@@ -46,7 +46,7 @@ export function loadDefaultLocation (userLocation) {
           dispatch ({type: 'SET_CURR_LOCATION', location});
           dispatch ({type: 'SET_CURR_FORECAST', forecast});
       } catch (err) {
-        dispatch (setToast ({msg: err.message, type: 'error'}));
+        dispatch (setToast ({msg: `Can't load default location`, type: 'error'}));
       }
   };
 }

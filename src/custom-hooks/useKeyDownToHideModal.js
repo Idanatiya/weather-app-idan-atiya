@@ -1,10 +1,7 @@
 
 
-import { useEffect } from 'react';
-
-
 /**Custom hook to hide and show modal  using a custom key from the keyboard */
-
+import { useEffect } from 'react';
 export const useKeyDownToHideModal = ({key = 27,handleFunc,showModal = false}) => {
    const handleKeyDown = (ev) => {
        if(ev.keyCode === key) handleFunc()
