@@ -15,7 +15,6 @@ const initialState = {
 function Signup () {
   const dispatch = useDispatch ();
   const history = useHistory ();
-  const {errMsg} = useSelector(state => state.userReducer)
   const [user, setUser] = useState (initialState);
   const [isSignup, setIsSignup] = useState (true);
   const [isLoading, setIsLoading] = useState (false);

@@ -38,6 +38,25 @@
       font-size: 19px;
       cursor: pointer;
       color: white;
+
+
+      .pill {
+        display: inline-block;
+        background: #ffffff;
+        color: black;
+        /* margin: 20px 10px 0 0; */
+        padding: 4px 12px;
+        color: black;
+        border-radius: 9999px;
+        letter-spacing: 1px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .badge {
+        border-radius: 9999px;
+
+      }
       span {
         margin-left: 4px;
       }

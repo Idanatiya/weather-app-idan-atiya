@@ -12,6 +12,7 @@ import FeaturedLocation from '../cmps/FeaturedLocation.jsx';
 import ForecastList from '../cmps/ForecastList.jsx';
 import Loader from '../cmps/custom-cmps/Loader.jsx';
 
+
 export default function WeatherApp () {
   const dispatch = useDispatch ();
   const {currLocation, forecast, favorites,loading} = useSelector (state => state.weatherReducer)

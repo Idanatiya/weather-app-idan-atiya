@@ -1,6 +1,7 @@
+import { useSelector } from 'react-redux';
 import {NavLink} from 'react-router-dom';
-
 export default function Sidebar ({theme,user}) {
+  const {favorites} = useSelector(state => state.weatherReducer)
   return (
     <section className="sidebar-container" style={{backgroundColor: theme}}>
       <section className="sidebar-info">
@@ -17,7 +18,7 @@ export default function Sidebar ({theme,user}) {
         </NavLink>
         <NavLink className="sidebar-link" to="/favorites">
           <i className="far fa-star" />
-          <span>Favorites</span>
+          <span>Favorites <span className="pill">{favorites.length === 0 ? 0 : favorites.length}</span></span>
         </NavLink>
       </div>
     </section>

@@ -1,15 +1,18 @@
 import axios from 'axios';
 import {storageService} from './storage-service';
 let cancelToken;
-const API_KEY = '3LxGFGyVNFTk82rsvzUSyWq2a5a7zibC';
+const API_KEY = 'TlsrALAXD6rT9J8BV3QDWDqQeAdqET7F';
 var gFavLocations = storageService.loadFromStorage('favoriteDB') || [];
 
 export function addLocation (location) {
+  console.log('location in favorite?:',location);
     const favLocation = {
         id: location.locationKey,
         name: location.locationName,
         cTemp: location.temperature.Metric.Value,
         fTemp: location.temperature.Imperial.Value,
+        countryName: location.countryName,
+        adminstrativeName: location.adminstrativeName
     };
     gFavLocations.push (favLocation);
     storageService.saveToStorage('favoriteDB', gFavLocations)
@@ -23,24 +26,6 @@ export async function deleteLocation(locationId) {
     storageService.saveToStorage('favoriteDB',gFavLocations);
 }
 
-
-const filteredOptions = options => {
-  const mySet = new Set( options.map(option => option.LocalizedName));
-  const noDuplicates = options.map(option => {
-    if(mySet.has(option.LocalizedName)) {
-      return option;
-    }
-  })
-  console.log('set?:',mySet)
-  console.log('deps',noDuplicates);
-  // options.forEach(option => {
-  //   if(!mySet.has(option.LocalizedName)) {
-  //     mySet.add(option)
-  //   }
-  // })
-  // console.log(mySet);
-  // return [...mySet];
-}
 
 
 async function getCities (searchTerm) {
@@ -59,7 +44,6 @@ async function getCities (searchTerm) {
     if(options.length === 0){
       throw Error(`No options Available for ${searchTerm}`);
     } 
-    console.log('filtered',filteredOptions(options));
     return options;
     
   } catch (err) {
@@ -70,15 +54,20 @@ async function getCities (searchTerm) {
 }
 
 export async function getCurrWeather (location) {
-  console.log('location',location);
+  console.log('what is location:',location);
   const {Key : locationKey,LocalizedName:locationName} = location
-  const {LocalizedName : adminstrativeName} = location.AdministrativeArea
-  const {LocalizedName: countryName} = location.Country
+  let adminstrativeName;
+  let countryName;
+  // if(location.adminstrativeName && location.Country)
+  if(location.AdministrativeArea && location.Country) {
+    adminstrativeName = location.AdministrativeArea.LocalizedName;
+    countryName = location.Country.LocalizedName
+
+  }
   try {
     const res = await axios.get (
       `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}&details=true`
     );
-    console.log(res.data);
     const {
       CloudCover : cloudCover,
       IsDayTime: isDayTime,

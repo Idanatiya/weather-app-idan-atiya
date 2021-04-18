@@ -65,17 +65,6 @@ export default function WeatherSearch() {
      dispatch(loadCurrForecast(selectedOption));
   };
 
-  const filteredOptions = () => {
-    const mySet = new Set()
-    options.forEach(option => {
-      if(!mySet.has(option.LocalizedName)) {
-        mySet.add(option)
-      }
-    })
-    console.log(mySet);
-    return [...mySet];
-  }
-
 
   return (
     <>
