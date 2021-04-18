@@ -1,21 +1,24 @@
 import {useEffect} from 'react';
 import {createPortal } from 'react-dom';
 import logo from '../../assets/imgs/hero.png';
+import { useKeyDownToHideModal } from './../../custom-hooks/useKeyDownToHideModal';
 
 const elModalContainer = document.querySelector('#app-modal')
 function Modal({showModal,hide}) {
-    console.log('show modal?:',showModal);
-    console.log('hide modal?:',hide);
-    useEffect(() => {
-        function handleKeyDown(ev) {
-            if(ev.keyCode === 27) hide()
-        }
-        if(showModal) document.addEventListener('keydown', handleKeyDown)
-        return () => {
-            document.removeEventListener('keydown',handleKeyDown)
-        }
-    },[showModal])
-
+    useKeyDownToHideModal({
+        key: 27,
+        handleFunc: () => hide(),
+        showModal
+    })
+    // useEffect(() => {
+    //     function handleKeyDown(ev) {
+    //         if(ev.keyCode === 27) hide()
+    //     }
+    //     if(showModal) document.addEventListener('keydown', handleKeyDown)
+    //     return () => {
+    //         document.removeEventListener('keydown',handleKeyDown)
+    //     }
+    // },[showModal])
     return showModal ? createPortal(
         <section onClick={hide} className="overlay">
         <section className="modal-container flex column align-center" onClick={ev => ev.stopPropagation()}>
