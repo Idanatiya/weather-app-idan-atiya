@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Route, Switch,Redirect} from 'react-router-dom';
-import useModal from './custom-hooks/useModal';
+import useToggle from './custom-hooks/useToggle';
 import { useSelector, useDispatch } from 'react-redux';
 import {useEffect,useState} from 'react'
 import {
@@ -22,8 +22,10 @@ function App () {
   const toast = useSelector(state => state.toastReducer.toast);
   const {theme,mode} = useSelector(state => state.prefReducer);
   const {user} = useSelector(state => state.userReducer)
-  const {showModal,toggle} = useModal()
-  const [showMenu, setShowMenu] = useState(false)
+  // const {showModal,toggle} = useModal()
+  // const [showMenu, setShowMenu] = useState(false)
+  const [isToggledMenu, toggleMenu] = useToggle()
+  const [isToggledModal, toggleModal] = useToggle()
   var timeoutId;
   useEffect (() => {
     timeoutId = setTimeout (() => {
@@ -35,9 +37,7 @@ function App () {
   },[toast]);
 
 
-  const toggleMobileMenu = () => {
-    setShowMenu(prevShowMenu => !prevShowMenu)
-  }
+  const toggleMobileMenu = () => toggleMenu()
 
   const handleLogout = () => {
     dispatch(logout())
@@ -47,9 +47,9 @@ function App () {
   return (
     <>
     {toast && <Toast toast={toast} />}
-    <Modal showModal={showModal} hide={toggle}></Modal>
+    <Modal showModal={isToggledModal} hide={toggleModal}></Modal>
     <Router>
-      <div className={`app-container ${showMenu ? 'show-menu' : ''}`}>
+      <div className={`app-container ${isToggledMenu ? 'show-menu' : ''}`}>
           <Switch>
             <Route path="/signup" component={Signup} />
           </Switch>
@@ -57,7 +57,7 @@ function App () {
         <Redirect to="/signup" />
       ) : (
         <>
-        <AppHeader toggle={toggle} theme={theme} user={user} handleLogout={handleLogout} toggleMobileMenu={toggleMobileMenu}/>
+        <AppHeader toggleModal={toggleModal} theme={theme} user={user} handleLogout={handleLogout} toggleMobileMenu={toggleMobileMenu}/>
         <Sidebar theme={theme} user={user} />
         <main className={`app-content ${mode}`}>
           <Switch>

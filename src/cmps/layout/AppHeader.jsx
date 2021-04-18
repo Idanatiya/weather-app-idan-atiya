@@ -4,13 +4,13 @@ import WeatherSearch from '../WeatherSearch.jsx';
 import ColorPalette from  '../custom-cmps/ColorPalette.jsx';
 import ToggleTempBtn from '../custom-cmps/ToggleTempBtn.jsx';
 import Avatar from '../custom-cmps/Avatar.jsx';
-export default function AppHeader({toggle,theme,handleLogout,toggleMobileMenu,user}) {
+export default function AppHeader({toggleModal,theme,handleLogout,toggleMobileMenu,user}) {
   const location = useLocation();
   return (
     <section className="app-header-container" style={{backgroundColor: theme }}>
       <section className="header-left">
         <Avatar username={user.username} userImg={user.userImg}/>
-        <span className="btn-modal" onClick={toggle}>
+        <span className="btn-modal" onClick={toggleModal}>
           <i className="fas fa-info-circle" />
         </span>
         <span className="btn-mobile-menu" onClick={toggleMobileMenu}><i className="fas fa-bars"></i></span>

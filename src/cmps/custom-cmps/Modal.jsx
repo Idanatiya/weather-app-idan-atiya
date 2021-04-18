@@ -4,6 +4,8 @@ import logo from '../../assets/imgs/hero.png';
 
 const elModalContainer = document.querySelector('#app-modal')
 function Modal({showModal,hide}) {
+    console.log('show modal?:',showModal);
+    console.log('hide modal?:',hide);
     useEffect(() => {
         function handleKeyDown(ev) {
             if(ev.keyCode === 27) hide()
